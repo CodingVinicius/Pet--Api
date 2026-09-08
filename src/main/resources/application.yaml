@@ -1,0 +1,34 @@
+
+spring:
+  application:
+    name: Api-Pet
+
+  datasource:
+    # JDBC URL of the database.
+    url: jdbc:postgresql://localhost:5433/Api-Pet
+
+    # Login username of the database.
+    username: postgres
+
+    # Login password of the database. (cpcx ou 0000 - na UFMS)
+    password: nova_senha
+
+  jpa:
+    # JPA (JpaBaseConfiguration, HibernateJpaAutoConfiguration)
+    hibernate:
+      ddl-auto: update
+
+    # Whether to enable logging of SQL statements.
+    show-sql: true
+
+    # Hibernate additional native properties to set on the JPA provider.
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        current_session_context_class: thread
+        format_sql: true
+
+    jdbc:
+      # Fix Postgres JPA Error (Method org.postgresql.jdbc.PgConnection.createClob() is not yet implemented).
+      lob:
+        non_contextual_creation: true
