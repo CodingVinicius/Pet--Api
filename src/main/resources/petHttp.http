@@ -1,0 +1,83 @@
+### 1.
+POST http://localhost:8080/v1/pet
+Content-Type: application/json
+
+{
+  "nome": "Rex",
+  "especie_raca": "Golden Retriever",
+  "idade": 5,
+  "nome_tutor": "Deiviston Aguena",
+  "telefone_tutor": "67 9999-9999",
+  "endereco": "Rua das Flores, 100",
+  "historico_observacoes": "Pet saudável"
+}
+
+
+###
+POST http://localhost:8080/v1/pet
+Content-Type: application/json
+
+{
+  "nome": "Thor",
+  "especie_raca": "Labrador",
+  "idade": 3,
+  "nome_tutor": "Marcus Vinícius",
+  "telefone_tutor": "7777777",
+  "endereco": "Rua João Pessoa, 325 - Centro",
+  "historico_observacoes": "Pet saudável"
+}
+
+
+###
+GET http://localhost:8080/v1/pet
+
+
+###
+PUT http://localhost:8080/v1/pet/1
+Content-Type: application/json
+
+{
+  "nome": "Thor",
+  "especie_raca": "Labrador",
+  "idade": 4,
+  "nome_tutor": "Marcus Vinícius",
+  "telefone_tutor": "7777777",
+  "endereco": "Rua Antônio de Albuquerque, 100 - Centro",
+  "historico_observacoes": "Pet atualizado"
+}
+
+
+###
+POST http://localhost:8080/v1/agendamento
+Content-Type: application/json
+
+{
+  "pet_id": 1,
+  "tipo_servico": "Banho",
+  "data_horario": "2026-09-10T14:00:00",
+  "valor": 50.00,
+  "status": "AGENDADO",
+  "observacoes": "Banho normal"
+}
+
+
+###
+GET http://localhost:8080/v1/agendamento
+
+
+###
+PUT http://localhost:8080/v1/agendamento/1
+Content-Type: application/json
+
+{
+  "pet_id": 1,
+  "tipo_servico": "Banho e Tosa",
+  "data_horario": "2026-09-10T15:00:00",
+  "valor": 80.00,
+  "status": "CONFIRMADO",
+  "observacoes": "Cliente confirmou o horário"
+}
+
+
+###
+DELETE http://localhost:8080/v1/agendamento/1

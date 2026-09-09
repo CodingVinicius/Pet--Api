@@ -39,5 +39,5 @@ public class PetModel implements Serializable {
     private String historico_observacoes;
 
     @Column(nullable = false)
-    private LocalDate data_cadastro;
+    private LocalDate data_cadastro = LocalDate.now();
 }
