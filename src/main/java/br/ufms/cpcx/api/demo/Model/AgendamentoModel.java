@@ -1,4 +1,5 @@
 package br.ufms.cpcx.api.demo.Model;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,10 +8,11 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TB-AGENDAMENTO")
+@Table(name = "TB_AGENDAMENTO")
 @Data
 @NoArgsConstructor
 public class AgendamentoModel implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,13 +23,15 @@ public class AgendamentoModel implements Serializable {
     @Column(nullable = false, length = 100)
     private String tipo_servico;
 
-    @Column(nullable = false, length =100)
+    @Column(nullable = false)
     private LocalDateTime data_horario;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private Double valor;
 
-    @Column(nullable = false, length = 250)
-    private String observacao;
+    @Column(nullable = false, length = 50)
+    private String status;
 
+    @Column(length = 250)
+    private String observacoes;
 }

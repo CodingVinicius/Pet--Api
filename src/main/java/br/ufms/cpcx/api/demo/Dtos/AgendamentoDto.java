@@ -18,8 +18,12 @@ public record AgendamentoDto(
 
         Double valor,
 
+        @NotBlank
+        @Size(max = 50)
+        String status,
+
         @Size(max = 250)
-        String observacao
+        String observacoes
 
 ) {
 
@@ -30,7 +34,8 @@ public record AgendamentoDto(
         agendamentoModel.setTipo_servico(this.tipo_servico);
         agendamentoModel.setData_horario(this.data_horario);
         agendamentoModel.setValor(this.valor);
-        agendamentoModel.setObservacao(this.observacao);
+        agendamentoModel.setStatus(this.status);
+        agendamentoModel.setObservacoes(this.observacoes);
 
         return agendamentoModel;
     }
