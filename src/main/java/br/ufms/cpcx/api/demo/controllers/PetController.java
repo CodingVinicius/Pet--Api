@@ -1,7 +1,10 @@
 package br.ufms.cpcx.api.demo.controllers;
 
+import br.ufms.cpcx.api.demo.Dtos.AgendamentoPetDto;
 import br.ufms.cpcx.api.demo.Dtos.PetDto;
+import br.ufms.cpcx.api.demo.Model.AgendamentoModel;
 import br.ufms.cpcx.api.demo.Model.PetModel;
+import br.ufms.cpcx.api.demo.Service.AgendamentoService;
 import br.ufms.cpcx.api.demo.Service.PetService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -14,18 +17,20 @@ import java.util.List;
 public class PetController {
 
     private final PetService petService;
+    private final AgendamentoService agendamentoService;
 
-    public PetController(PetService petService) {
-        this.petService = petService;
+    public PetController(PetService petservice, AgendamentoService agendamentoService) {
+        this.petService = petservice;
+        this.agendamentoService = agendamentoService;
     }
 
     @PostMapping
-    public ResponseEntity<PetModel> save(@RequestBody @Valid PetDto petDto) {
+    public ResponseEntity<PetModel> save(@Valid @RequestBody PetDto petDto) {
         return ResponseEntity.ok(petService.save(petDto.toModel()));
     }
 
     @GetMapping
-    public ResponseEntity<List<PetModel>> findAll() {
+    public ResponseEntity<List<PetModel>> findall() {
         return ResponseEntity.ok(petService.findAll());
     }
 
@@ -35,10 +40,7 @@ public class PetController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PetModel> update(
-            @PathVariable Long id,
-            @RequestBody @Valid PetDto petDto) {
-
+    public ResponseEntity<PetModel> update(@PathVariable Long id, @Valid @RequestBody PetDto petDto) {
         return ResponseEntity.ok(petService.update(id, petDto.toModel()));
     }
 
@@ -46,5 +48,10 @@ public class PetController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         petService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{petId}/agendamento")
+    public ResponseEntity<AgendamentoModel> saveAgendamento(@PathVariable Long petId, @RequestBody @Valid AgendamentoPetDto agendamentoPetDto) {
+        return ResponseEntity.ok(agendamentoService.save(agendamentoPetDto.toModel(), petId));
     }
 }

@@ -7,10 +7,7 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
-public record AgendamentoDto(
-        @NotNull
-        Long pet_id,
-
+public record AgendamentoPetDto(
         @NotBlank
         @Size(max = 100)
         String tipo_servico,

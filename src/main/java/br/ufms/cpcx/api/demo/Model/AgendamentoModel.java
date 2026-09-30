@@ -1,8 +1,11 @@
 package br.ufms.cpcx.api.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -17,8 +20,14 @@ public class AgendamentoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long pet_id;
+    @JsonIgnoreProperties("agendamentos")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(
+            name = "pet",
+            foreignKey = @ForeignKey(name = "FK_PET"),
+            nullable = false
+    )
+    private PetModel pet;
 
     @Column(nullable = false, length = 100)
     private String tipo_servico;
@@ -29,9 +38,6 @@ public class AgendamentoModel implements Serializable {
     @Column(nullable = false)
     private Double valor;
 
-    @Column(nullable = false, length = 50)
-    private String status;
-
     @Column(length = 250)
-    private String observacoes;
+    private String observacao;
 }
