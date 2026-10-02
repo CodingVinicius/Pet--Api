@@ -1,4 +1,5 @@
-### 1. Cadastrar Pet
+### 1. Cadastrar o pet Rex
+
 POST http://localhost:8080/v1/pet
 Content-Type: application/json
 
@@ -7,14 +8,14 @@ Content-Type: application/json
   "especie_raca": "Golden Retriever",
   "idade": 5,
   "nome_tutor": "Deiviston Aguena",
-  "telefone_tutor": "67 9999-9999",
-  "endereco": "Rua das Flores, 100",
+  "telefone_tutor": "67999990001",
+  "endereco": "Rua Central, 100",
   "historico_observacoes": "Pet saudável",
-  "data_cadastro": "2026-09-28"
+  "data_cadastro": "2026-10-01"
 }
 
+### 2. Cadastrar o pet Thor
 
-###
 POST http://localhost:8080/v1/pet
 Content-Type: application/json
 
@@ -23,162 +24,39 @@ Content-Type: application/json
   "especie_raca": "Labrador",
   "idade": 3,
   "nome_tutor": "Marcus Vinícius",
-  "telefone_tutor": "7777777",
+  "telefone_tutor": "67999990002",
   "endereco": "Rua João Pessoa, 325 - Centro",
   "historico_observacoes": "Pet saudável",
-  "data_cadastro": "2026-09-28"
+  "data_cadastro": "2026-10-01"
 }
 
+### 3. Listar todos os pets
 
-###
 GET http://localhost:8080/v1/pet
 
+### 4. Buscar o pet Rex pelo ID
 
-###
 GET http://localhost:8080/v1/pet/1
 
+### 5. Cadastrar um agendamento de banho para Rex
 
-###
-PUT http://localhost:8080/v1/pet/1
+POST http://localhost:8080/v1/pet/1/agendamento
 Content-Type: application/json
 
 {
-  "nome": "Rex Atualizado",
-  "especie_raca": "Golden Retriever",
-  "idade": 6,
-  "nome_tutor": "Deiviston Aguena",
-  "telefone_tutor": "67 9999-9999",
-  "endereco": "Rua Antônio de Albuquerque, 100 - Centro",
-  "historico_observacoes": "Pet atualizado",
-  "data_cadastro": "2026-09-28"
-}
-
-
-###
-POST http://localhost:8080/v1/agendamento
-Content-Type: application/json
-
-{
-  "pet_id": 1,
   "tipo_servico": "Banho",
-  "data_horario": "2026-09-29T14:00:00",
-  "valor": 50.00,
-  "observacao": "Banho normal"
+  "data_horario": "2026-10-05T09:00:00",
+  "valor": 60.00,
+  "observacao": "Banho completo"
 }
 
-
-###
-POST http://localhost:8080/v1/agendamento
+### Cadastrar agendamento de banho para o pet 1
+POST http://localhost:8080/v1/pet/1/agendamento
 Content-Type: application/json
 
 {
-  "pet_id": 1,
-  "tipo_servico": "Tosa",
-  "data_horario": "2026-09-30T10:00:00",
-  "valor": 40.00,
-  "observacao": "Tosa completa"
-}
-
-
-###
-POST http://localhost:8080/v1/agendamento
-Content-Type: application/json
-
-{
-  "pet_id": 2,
-  "tipo_servico": "Consulta Veterinária",
-  "data_horario": "2026-10-01T15:00:00",
-  "valor": 120.00,
-  "observacao": "Consulta de rotina"
-}
-
-
-###
-GET http://localhost:8080/v1/agendamento
-
-
-###
-GET http://localhost:8080/v1/agendamento/1
-
-
-###
-PUT http://localhost:8080/v1/agendamento/1
-Content-Type: application/json
-
-{
-  "pet_id": 1,
-  "tipo_servico": "Banho e Tosa",
-  "data_horario": "2026-09-29T15:00:00",
-  "valor": 80.00,
-  "observacao": "Cliente confirmou o horário"
-}
-
-
-###
-POST http://localhost:8080/v1/agendamento
-Content-Type: application/json
-
-{
-  "pet_id": 999,
   "tipo_servico": "Banho",
-  "data_horario": "2026-10-02T14:00:00",
-  "valor": 50.00,
-  "observacao": "Teste de Pet inexistente"
-}
-
-
-###
-GET http://localhost:8080/v1/pet/999
-
-
-###
-GET http://localhost:8080/v1/agendamento/999
-
-
-###
-DELETE http://localhost:8080/v1/agendamento/1
-
-
-###
-GET http://localhost:8080/v1/agendamento
-
-
-###
-DELETE http://localhost:8080/v1/pet/1
-
-
-###
-GET http://localhost:8080/v1/pet
-
-
-###
-GET http://localhost:8080/v1/agendamento
-
-
-###
-POST http://localhost:8080/v1/pet
-Content-Type: application/json
-
-{
-  "nome": "Thor",
-  "especie_raca": "Labrador",
-  "idade": 3,
-  "nome_tutor": "Marcus Vinícius",
-  "telefone_tutor": "7777777",
-  "endereco": "Rua João Pessoa, 325 - Centro",
-  "historico_observacoes": "Pet saudável",
-  "data_cadastro": "2026-09-28"
-}
-
-
-###
-### 9. Cadastrar Agendamento pelo Pet 2
-POST http://localhost:8080/v1/pet/2/agendamento
-Content-Type: application/json
-
-{
-  "tipo_servico": "Vacinação",
-  "data_horario": "2026-10-02T09:00:00",
-  "valor": 90.00,
-  "observacao": "Vacina anual"
+  "data_horario": "2026-10-05T09:00:00",
+  "valor": 60.00,
+  "observacao": "Banho completo"
 }

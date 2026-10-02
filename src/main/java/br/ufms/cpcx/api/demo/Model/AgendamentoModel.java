@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -16,17 +14,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class AgendamentoModel implements Serializable {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JsonIgnoreProperties("agendamentos")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(
-            name = "pet",
-            foreignKey = @ForeignKey(name = "FK_PET"),
-            nullable = false
-    )
+    @JoinColumn(name = "pet_id", nullable = false)
     private PetModel pet;
 
     @Column(nullable = false, length = 100)
@@ -40,4 +35,9 @@ public class AgendamentoModel implements Serializable {
 
     @Column(length = 250)
     private String observacao;
+
+    @Column(nullable = false, length = 30)
+    private String status = "Agendado";
+
+
 }

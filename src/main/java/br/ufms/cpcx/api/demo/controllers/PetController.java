@@ -16,11 +16,12 @@ import java.util.List;
 @RequestMapping("/v1/pet")
 public class PetController {
 
+
     private final PetService petService;
     private final AgendamentoService agendamentoService;
 
-    public PetController(PetService petservice, AgendamentoService agendamentoService) {
-        this.petService = petservice;
+    public PetController(PetService petService, AgendamentoService agendamentoService) {
+        this.petService = petService;
         this.agendamentoService = agendamentoService;
     }
 
@@ -30,7 +31,7 @@ public class PetController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PetModel>> findall() {
+    public ResponseEntity<List<PetModel>> findAll() {
         return ResponseEntity.ok(petService.findAll());
     }
 
@@ -51,7 +52,9 @@ public class PetController {
     }
 
     @PostMapping("/{petId}/agendamento")
-    public ResponseEntity<AgendamentoModel> saveAgendamento(@PathVariable Long petId, @RequestBody @Valid AgendamentoPetDto agendamentoPetDto) {
+    public ResponseEntity<AgendamentoModel> saveAgendamento(@PathVariable Long petId, @Valid @RequestBody AgendamentoPetDto agendamentoPetDto) {
         return ResponseEntity.ok(agendamentoService.save(agendamentoPetDto.toModel(), petId));
     }
+
+
 }

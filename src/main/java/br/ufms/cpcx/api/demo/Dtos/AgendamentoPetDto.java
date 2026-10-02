@@ -12,6 +12,7 @@ public record AgendamentoPetDto(
         @Size(max = 100)
         String tipo_servico,
 
+
         @NotNull
         LocalDateTime data_horario,
 
@@ -20,16 +21,17 @@ public record AgendamentoPetDto(
 
         @Size(max = 250)
         String observacao
+
 ) {
 
     public AgendamentoModel toModel() {
         AgendamentoModel agendamento = new AgendamentoModel();
-
         agendamento.setTipo_servico(this.tipo_servico);
         agendamento.setData_horario(this.data_horario);
         agendamento.setValor(this.valor);
         agendamento.setObservacao(this.observacao);
-
         return agendamento;
     }
+
+
 }

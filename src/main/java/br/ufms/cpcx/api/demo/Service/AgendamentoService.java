@@ -11,19 +11,16 @@ import java.util.List;
 @Service
 public class AgendamentoService {
 
+
     private final AgendamentoRepository agendamentoRepository;
     private final PetRepository petRepository;
 
-    public AgendamentoService(
-            AgendamentoRepository agendamentoRepository,
-            PetRepository petRepository) {
-
+    public AgendamentoService(AgendamentoRepository agendamentoRepository, PetRepository petRepository) {
         this.agendamentoRepository = agendamentoRepository;
         this.petRepository = petRepository;
     }
 
     public AgendamentoModel save(AgendamentoModel agendamento, Long petId) {
-
         PetModel pet = petRepository.findById(petId)
                 .orElseThrow(() -> new RuntimeException("Pet não encontrado"));
 
@@ -41,11 +38,7 @@ public class AgendamentoService {
                 .orElseThrow(() -> new RuntimeException("Agendamento não encontrado"));
     }
 
-    public AgendamentoModel update(
-            Long id,
-            AgendamentoModel agendamento,
-            Long petId) {
-
+    public AgendamentoModel update(Long id, AgendamentoModel agendamento, Long petId) {
         AgendamentoModel agendamentoAtual = findById(id);
 
         PetModel pet = petRepository.findById(petId)
@@ -64,4 +57,6 @@ public class AgendamentoService {
         AgendamentoModel agendamento = findById(id);
         agendamentoRepository.delete(agendamento);
     }
+
+
 }
