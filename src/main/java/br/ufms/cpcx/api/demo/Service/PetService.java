@@ -1,8 +1,11 @@
 package br.ufms.cpcx.api.demo.Service;
 
+import br.ufms.cpcx.api.demo.Exceptions.AlreadyExistsException;
 import br.ufms.cpcx.api.demo.Model.PetModel;
 import br.ufms.cpcx.api.demo.Repositories.PetRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -16,6 +19,15 @@ public class PetService {
     }
 
     public PetModel save(PetModel pet) {
+        boolean duplicado = petRepository.findAll().stream()
+                .anyMatch(p -> p.getNome().equalsIgnoreCase(pet.getNome())
+                        && p.getTelefone_tutor().equals(pet.getTelefone_tutor()));
+
+        if (duplicado) {
+            throw new AlreadyExistsException(
+                    "Já existe um pet cadastrado com esse nome e telefone do tutor");
+        }
+
         return petRepository.save(pet);
     }
 
@@ -25,11 +37,21 @@ public class PetService {
 
     public PetModel findById(Long id) {
         return petRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Pet não encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pet não encontrado"));
     }
 
     public PetModel update(Long id, PetModel pet) {
         PetModel petAtual = findById(id);
+
+        boolean duplicado = petRepository.findAll().stream()
+                .anyMatch(p -> !p.getId().equals(id)
+                        && p.getNome().equalsIgnoreCase(pet.getNome())
+                        && p.getTelefone_tutor().equals(pet.getTelefone_tutor()));
+
+        if (duplicado) {
+            throw new AlreadyExistsException(
+                    "Já existe outro pet cadastrado com esse nome e telefone do tutor");
+        }
 
         petAtual.setNome(pet.getNome());
         petAtual.setEspecie_raca(pet.getEspecie_raca());

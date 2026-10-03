@@ -1,3 +1,4 @@
+
 package br.ufms.cpcx.api.demo.Dtos;
 
 import br.ufms.cpcx.api.demo.Model.AgendamentoModel;
@@ -11,7 +12,6 @@ public record AgendamentoDto(
         @NotNull
         Long pet_id,
 
-
         @NotBlank
         @Size(max = 100)
         String tipo_servico,
@@ -23,18 +23,21 @@ public record AgendamentoDto(
         Double valor,
 
         @Size(max = 250)
-        String observacao
+        String observacao,
 
+        String status
 ) {
-
     public AgendamentoModel toModel() {
         AgendamentoModel agendamento = new AgendamentoModel();
         agendamento.setTipo_servico(this.tipo_servico);
         agendamento.setData_horario(this.data_horario);
         agendamento.setValor(this.valor);
         agendamento.setObservacao(this.observacao);
+
+        if (this.status != null) {
+            agendamento.setStatus(this.status);
+        }
+
         return agendamento;
     }
-
-
 }
