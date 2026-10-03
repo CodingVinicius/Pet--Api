@@ -1,5 +1,5 @@
 
-### 1. CADASTRAR PET REX
+###  CADASTRAR PET REX
 
 POST http://localhost:8080/v1/pet
 Content-Type: application/json
@@ -15,7 +15,7 @@ Content-Type: application/json
   "data_cadastro": "2026-10-02"
 }
 
-### 2. CADASTRAR PET MEl
+###  CADASTRAR PET MEl
 
 POST http://localhost:8080/v1/pet
 Content-Type: application/json
@@ -31,15 +31,15 @@ Content-Type: application/json
   "data_cadastro": "2026-10-02"
 }
 
-### 3. LISTAR TODOS OS PETS
+###  LISTAR TODOS OS PETS
 
 GET http://localhost:8080/v1/pet
 
-### 4. BUSCAR PET REX PELO ID
+###  BUSCAR PET REX PELO ID
 
 GET http://localhost:8080/v1/pet/1
 
-### 5. ATUALIZAR PET Mel
+###  ATUALIZAR PET Mel
 
 PUT http://localhost:8080/v1/pet/1
 Content-Type: application/json
@@ -55,7 +55,7 @@ Content-Type: application/json
   "data_cadastro": "2026-10-02"
 }
 
-### 6. CADASTRAR AGENDAMENTO PARA REX
+###  CADASTRAR AGENDAMENTO PARA REX
 
 POST http://localhost:8080/v1/pet/1/agendamento
 Content-Type: application/json
@@ -67,19 +67,19 @@ Content-Type: application/json
   "observacao": "Banho completo"
 }
 
-### 7. LISTAR TODOS OS AGENDAMENTOS
+###  LISTAR TODOS OS AGENDAMENTOS
 
 GET http://localhost:8080/v1/agendamento
 
-### 8. BUSCAR AGENDAMENTO PELO ID
+###  BUSCAR AGENDAMENTO PELO ID
 
 GET http://localhost:8080/v1/agendamento/1
 
-### 9. TENTAR EXCLUIR AGENDAMENTO AINDA AGENDADO
+###  TENTAR EXCLUIR AGENDAMENTO AINDA AGENDADO
 
 DELETE http://localhost:8080/v1/agendamento/1
 
-### 10. CONCLUIR AGENDAMENTO
+###  CONCLUIR AGENDAMENTO
 
 PUT http://localhost:8080/v1/agendamento/1
 Content-Type: application/json
@@ -93,15 +93,15 @@ Content-Type: application/json
   "status": "Concluído"
 }
 
-### 11. EXCLUIR AGENDAMENTO CONCLUÍDO
+###  EXCLUIR AGENDAMENTO CONCLUÍDO
 
 DELETE http://localhost:8080/v1/agendamento/1
 
-### 12. TENTAR BUSCAR AGENDAMENTO INEXISTENTE
+###  TENTAR BUSCAR AGENDAMENTO INEXISTENTE
 
 GET http://localhost:8080/v1/agendamento/9999
 
-### 13. TENTAR CADASTRAR AGENDAMENTO PARA PET INEXISTENTE
+###  TENTAR CADASTRAR AGENDAMENTO PARA PET INEXISTENTE
 
 POST http://localhost:8080/v1/pet/9999/agendamento
 Content-Type: application/json
@@ -113,15 +113,15 @@ Content-Type: application/json
   "observacao": "Teste de pet inexistente"
 }
 
-### 14. LISTAR PETS APÓS OS TESTES
+###  LISTAR PETS APÓS OS TESTES
 
 GET http://localhost:8080/v1/pet
 
-### 15. EXCLUIR PET THOR
+###  EXCLUIR PET THOR
 
 DELETE http://localhost:8080/v1/pet/2
 
-### 16. LISTAR PETS NOVAMENTE
+###  LISTAR PETS NOVAMENTE
 
 GET http://localhost:8080/v1/pet
 
